@@ -3,10 +3,13 @@
 //  Esto es todo lo que te damos hecho. El resto es tuyo.
 // ============================================================
 
+import Player from "./jugador";
+
 const VELOCIDAD_JUGADOR = 400;
 
 const config = {
   type: Phaser.AUTO,
+
   width: 800,
   height: 600,
   backgroundColor: '#1d1d2b',
@@ -15,7 +18,9 @@ const config = {
     arcade: {
       // Poné esto en true para ver las cajas de colisión. Te va a servir.
       debug: false
+      
     }
+
   },
   scene: {
     preload: preload,
@@ -42,29 +47,50 @@ function preload() {
 // Acá se crean las cosas.
 // ------------------------------------------------------------
 function create() {
-  // Un rectángulo celeste como jugador. Podés reemplazarlo por un sprite.
-  jugador = this.add.rectangle(400, 550, 70, 20, 0x66ccff);
+//crear jugador
+  this.jugador = new Player(scene,400, 550, 70, 20, 0x66ccff);
 
   // Le damos un cuerpo de física para poder detectar colisiones más adelante.
   this.physics.add.existing(jugador);
   jugador.body.setCollideWorldBounds(true);
+//crear jugador
+
+
 
   // Las flechas del teclado.
   teclas = this.input.keyboard.createCursorKeys();
-}
+
+};
+function lanzarObjeto(){
+  // Genera una posición X aleatoria dentro del ancho del juego
+  const x = Phaser.Math.Between(50, 800);
+  
+  // Crea el sprite (asegúrate de haberlo precargado antes)
+  const objeto = this.add.rectangle(x,200, 300, 150, 100, 0xff0000);
+  
+  // Opcional: darle una velocidad de caída directa
+  this.physics.add.existing(objeto);
+  objeto.setVelocityY(200); }
+
+this.time.addEvent({
+  delay: 1000,
+  callback: lanzarObjeto,
+  callbackScope: this,
+  loop: true
+})
+
+
+
+
+
+
 
 // ------------------------------------------------------------
 // update: se ejecuta ~60 veces por segundo, siempre.
 // Acá va lo que cambia con el tiempo.
 // ------------------------------------------------------------
 function update() {
-  if (teclas.left.isDown) {
-    jugador.body.setVelocityX(-VELOCIDAD_JUGADOR);
-  } else if (teclas.right.isDown) {
-    jugador.body.setVelocityX(VELOCIDAD_JUGADOR);
-  } else {
-    jugador.body.setVelocityX(0);
-  }
+ this.jugador.update();
 }
 
 // ============================================================
