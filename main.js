@@ -2,8 +2,8 @@
 //  EL RECOLECTOR - Proyecto base
 //  Esto es todo lo que te damos hecho. El resto es tuyo.
 // ============================================================
-
-import Player from "./jugador";
+import Phaser from "https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.esm.js";
+import Player from "./jugador.js";
 
 const VELOCIDAD_JUGADOR = 400;
 
@@ -48,7 +48,7 @@ function preload() {
 // ------------------------------------------------------------
 function create() {
 //crear jugador
-  this.jugador = new Player(scene,400, 550, 70, 20, 0x66ccff);
+  this.jugador = new Player(this,400, 550, 70, 20, 0x66ccff);
 
   // Le damos un cuerpo de física para poder detectar colisiones más adelante.
   this.physics.add.existing(jugador);
@@ -60,6 +60,12 @@ function create() {
   // Las flechas del teclado.
   teclas = this.input.keyboard.createCursorKeys();
 
+  this.time.addEvent({
+    delay: 1000,
+    callback: lanzarObjeto,
+    callbackScope: this,
+    loop: true
+  })
 };
 function lanzarObjeto(){
   // Genera una posición X aleatoria dentro del ancho del juego
@@ -72,12 +78,6 @@ function lanzarObjeto(){
   this.physics.add.existing(objeto);
   objeto.setVelocityY(200); }
 
-this.time.addEvent({
-  delay: 1000,
-  callback: lanzarObjeto,
-  callbackScope: this,
-  loop: true
-})
 
 
 
