@@ -2,7 +2,7 @@
 //  EL RECOLECTOR - Proyecto base
 //  Esto es todo lo que te damos hecho. El resto es tuyo.
 // ============================================================
-import Phaser from "https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.esm.js";
+import * as Phaser from "https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.esm.js";
 import Player from "./jugador.js";
 
 const VELOCIDAD_JUGADOR = 400;
@@ -17,7 +17,7 @@ const config = {
     default: 'arcade',
     arcade: {
       // Poné esto en true para ver las cajas de colisión. Te va a servir.
-      debug: false
+      debug: true
       
     }
 
@@ -47,17 +47,9 @@ function preload() {
 // Acá se crean las cosas.
 // ------------------------------------------------------------
 function create() {
-//crear jugador
-  this.jugador = new Player(this,400, 550, 70, 20, 0x66ccff);
+  this.jugador = new Player(this, 400, 550, 70, 20, 0x66ccff);
+  this.jugador.body.setCollideWorldBounds(true); // esto sí lo necesitás, usando this.jugador
 
-  // Le damos un cuerpo de física para poder detectar colisiones más adelante.
-  this.physics.add.existing(jugador);
-  jugador.body.setCollideWorldBounds(true);
-//crear jugador
-
-
-
-  // Las flechas del teclado.
   teclas = this.input.keyboard.createCursorKeys();
 
   this.time.addEvent({
@@ -65,18 +57,22 @@ function create() {
     callback: lanzarObjeto,
     callbackScope: this,
     loop: true
-  })
+  });
+  
 };
 function lanzarObjeto(){
-  // Genera una posición X aleatoria dentro del ancho del juego
+ 
   const x = Phaser.Math.Between(50, 800);
   
-  // Crea el sprite (asegúrate de haberlo precargado antes)
-  const objeto = this.add.rectangle(x,200, 300, 150, 100, 0xff0000);
+ 
+  const objeto = this.add.rectangle(x,50, 50, 50,0xff0000);
   
-  // Opcional: darle una velocidad de caída directa
+ 
   this.physics.add.existing(objeto);
-  objeto.setVelocityY(200); }
+  objeto.body.setVelocityY(200); 
+
+
+}
 
 
 
@@ -89,10 +85,20 @@ function lanzarObjeto(){
 // update: se ejecuta ~60 veces por segundo, siempre.
 // Acá va lo que cambia con el tiempo.
 // ------------------------------------------------------------
-function update() {
- this.jugador.update();
-}
 
+
+// ------------------------------------------------------------
+// update: se ejecuta ~60 veces por segundo, siempre.
+// Acá va lo que cambia con el tiempo.
+// ------------------------------------------------------------
+function update() {
+  if (teclas.left.isDown) {
+    this.jugador.body.setVelocityX(-VELOCIDAD_JUGADOR);
+  } else if (teclas.right.isDown) {
+    this.jugador.body.setVelocityX(VELOCIDAD_JUGADOR);
+  } else {
+    this.jugador.body.setVelocityX(0);}
+  }
 // ============================================================
 //  PARA CORRERLO:
 //  - VS Code: extensión Live Server, botón "Go Live"
