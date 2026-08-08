@@ -6,7 +6,7 @@ import * as Phaser from "https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.
 import Player from "./jugador.js";
 
 const VELOCIDAD_JUGADOR = 400;
-
+import { GameScene } from "./Scene.js";
 const config = {
   type: Phaser.AUTO,
 
@@ -16,7 +16,8 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-      // Poné esto en true para ver las cajas de colisión. Te va a servir.
+   scene: [GameScene],
+   
       debug: true
       
     }
@@ -42,6 +43,8 @@ new Phaser.Game(config);
 function preload() {
 }
 
+this.load.image('Moneda', 'Assets/images.png')
+this.load.image('Background','Assets/Bosque.jpg')
 // ------------------------------------------------------------
 // create: se ejecuta UNA vez, al arrancar la escena.
 // Acá se crean las cosas.
