@@ -116,7 +116,7 @@ Sin los tres, la prueba no se corrige.
 - Repositorio Git con **commits durante el proceso**, no un único commit final. Quiero ver cómo avanzaste.
 - Un `README.md` de 5 líneas: qué ítems hiciste (por ID).
 
-**Plazo:** 7 días. **Defensa oral:** 15 minutos, agendada.
+**Plazo:** 7 días. **Defensa oral:** 15 minutos, 
 
 ---
 
