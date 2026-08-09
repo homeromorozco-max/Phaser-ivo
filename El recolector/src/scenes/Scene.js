@@ -195,8 +195,22 @@ this.eltimer.setText(Math.round(this.timer.getRemainingSeconds().toString()));
         this.elcero.setText(this.score.toString());
          this.elcerovidas.setText(this.vida.toString());
         this.sound.play('BOOM');
-        volume: 1
+        volume: 1;
+        this.parpadeabasket();
     };
+    parpadeabasket(){
+    this.tweens.add({
+        targets: this.basket,
+        alpha: 0,
+        duration: 100,
+        ease: 'Linear',
+        yoyo: true,
+        repeat: 5,       
+        onComplete: () => {
+            this.basket.setAlpha(1); 
+        }
+    });
+}
     
     gameover(){
         this.termino = true

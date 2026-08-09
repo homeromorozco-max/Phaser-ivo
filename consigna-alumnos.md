@@ -74,13 +74,7 @@ Todos Hechos
 
 | ID | Ítem |
 |---|---|
-| I1 | Hay dos tipos de objetos con efectos distintos (uno suma, uno resta o quita vida) | PENDIENTE
-
-| I2 | Sistema de vidas con feedback visual (el jugador parpadea, cambia de color, etc.) | PENDIENTE
-
 | I3 | Dificultad progresiva: con el tiempo caen más rápido o más seguido |
-
-
 | I7 | El puntaje máximo se guarda y sobrevive al cierre del navegador | Nah
 | I8 | El juego también se puede jugar con mouse o touch, además del teclado | Nah
 
@@ -89,12 +83,12 @@ Todos Hechos
 | ID | Ítem |
 |---|---|
 | A1 | Animaciones de sprite (spritesheet con frames, no cambio de imagen) | Nah
-| A2 | Efecto de partículas al recolectar | PUEDE SER
+| A2 | Efecto de partículas al recolectar | nah
 | A3 | Movimiento con tweens (aparición, desaparición o rebote suavizado con easing) | NAH
 
 | A5 | El juego es data-driven: los tipos de objeto están definidos en un array/objeto de configuración y el código los lee, en vez de estar escritos a mano uno por uno | Creo?
 | A6 | Creaste una clase propia que extiende una clase de Phaser y la usás |Eh?
-| A7 | Power-ups con duración temporal (imán, escudo, cámara lenta, doble puntaje) | PUEDE SER
+| A7 | Power-ups con duración temporal (imán, escudo, cámara lenta, doble puntaje) | nah
 | A8 | Efectos de cámara (shake al perder vida, flash, zoom) | Nah
 | A9 | El fondo tiene parallax o scroll infinito | Nah
 | A10 | Una escena de UI corriendo en paralelo a la del juego (no dentro de ella) | Eh?
