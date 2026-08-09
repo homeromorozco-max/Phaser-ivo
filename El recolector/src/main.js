@@ -1,5 +1,6 @@
 import { Scene } from './scenes/Scene.js';
 import { Gameoverscene } from './scenes/Gameoverscene.js';
+import { Title } from './scenes/Title.js';
 const config = {
     type: Phaser.AUTO,
     title: 'El recolector',
@@ -10,8 +11,10 @@ const config = {
     backgroundColor: '#fff',
     pixelArt: false,
     scene: [
+        Title,
         Scene,
-        Gameoverscene
+        Gameoverscene,
+        
     ],
     scale: {
         mode: Phaser.Scale.FIT,
