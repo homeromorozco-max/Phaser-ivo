@@ -12,9 +12,11 @@ export class Scene extends Phaser.Scene {
 this.load.image('Moneda', 'assets/images.png');
 this.load.image('Background', 'assets/background.jpg');
 this.load.image('Canasta', 'assets/basket.png');
+this.load.audio('Sonido','assets/pop.mp3');
     }
 
     create() {
+        this.score = 0
     this.add.image(0, 0, 'Background').setOrigin(0,0)
         this.basket = this.physics.add.image(this.scale.width / 2, 630, 'Canasta');
         this.basket.body.setAllowGravity(false).setCollideWorldBounds(true)
@@ -29,9 +31,12 @@ this.time.addEvent({
     callback:this.Spawneamoneda,
     callbackScope: this
 })
-this.Monedapiscina = this.physics.add.group([])
+//grupo de monedas
+this.monedapiscina = this.physics.add.group([])
 
 
+//Colisiones
+this.physics.add.overlap(this.basket, this.monedapiscina, this.colisionesentreobjetos, null, this)
 
 
 
@@ -40,39 +45,37 @@ this.Monedapiscina = this.physics.add.group([])
 update(){
 
     if(this.teclas.left.isDown){
-        console.log('Presionado Izquierda');
-        this.basket.setVelocityX(-500)
-       } else if(this.teclas.right.isDown){
-        console.log('Presionado Derecha');
+        this.basket.setVelocityX(-500)}
+         else if(this.teclas.right.isDown){
         this.basket.setVelocityX(500)
     }
     else {
-        console.log('Ninguna');
         this.basket.setVelocityX(0)
     }
 
-    this.Monedapiscina.getChildren().forEach((child) => {
+    this.monedapiscina.getChildren().forEach((child) => {
         if(!child.active){
-            return;
-        }
-        if (child.y > this.scale.height + 10){
-                 child.setActive(false).setVisible(false)
-        }
-
+            return; }
+        if (child.y > this.scale.height + 10){child.setActive(false).setVisible(false) }
     });
 }
 
    Spawneamoneda(){
-
-    const moneda = this.Monedapiscina.getFirstDead(true, Phaser.Math.RND.between(50,this.scale.width - 50), -20,'Moneda')
+    const moneda = this.monedapiscina.getFirstDead(true, Phaser.Math.RND.between(50,this.scale.width - 50), -20,'Moneda')
     moneda
     .setScale(0.35)
     .setActive(true)
     .setVisible(true)
-    .setVelocityX(0)
-    console.log(this.Monedapiscina.getChildren().length);
+    .setVelocity(0)
+    .enableBody()
+    console.log(this.monedapiscina.getChildren().length);}
 
+    colisionesentreobjetos(basket,moneda){
+        moneda.disableBody(true,true)
+        this.score += 1
+        this.sound.play('Sonido'); {
+        volume:1
+        }
     }
-
 
 }
