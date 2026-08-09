@@ -68,46 +68,36 @@ Sin los tres, la prueba no se corrige.
 ---
 
 ## Nivel 1 — Basico — Fundamentos
-
-| ID | Ítem | Pista de por dónde buscar |
-|---|---|---|
-| B1 | Caen objetos desde arriba de forma repetida y automática | eventos de tiempo en la escena |
-| B2 | Cuando el jugador toca un objeto, el objeto desaparece | detección de solapamiento |
-| B3 | Hay un contador de puntos visible en pantalla que sube | objetos de texto |
-| B4 | Los objetos aparecen en posiciones horizontales aleatorias | utilidades matemáticas de Phaser |
-| B5 | Hay una cuenta regresiva y cuando llega a 0 el juego termina | |
-| B6 | Suena un efecto cuando recolectás algo | carga de audio |
-| B7 | El juego usa al menos un sprite (imagen) cargado por vos, no solo formas | carga de imágenes |
-| B8 | Los objetos que salen de la pantalla se destruyen (y podés demostrarlo) | ¿por qué importa esto? explicalo en la bitácora |
+Todos Hechos
 
 ## Nivel 2 — Intermedio — Estructura
 
 | ID | Ítem |
 |---|---|
-| I1 | Hay dos tipos de objetos con efectos distintos (uno suma, uno resta o quita vida) |
-| I2 | Sistema de vidas con feedback visual (el jugador parpadea, cambia de color, etc.) |
+| I1 | Hay dos tipos de objetos con efectos distintos (uno suma, uno resta o quita vida) | PENDIENTE
+
+| I2 | Sistema de vidas con feedback visual (el jugador parpadea, cambia de color, etc.) | PENDIENTE
+
 | I3 | Dificultad progresiva: con el tiempo caen más rápido o más seguido |
-| I4 | Pantalla de "Game Over" y se puede reiniciar sin recargar la página |
-| I5 | Al menos dos escenas separadas (menú → juego) con navegación entre ellas |
-| I6 | Los objetos se manejan con un grupo, no creando y descartando sin control |
-| I7 | El puntaje máximo se guarda y sobrevive al cierre del navegador |
-| I8 | El juego también se puede jugar con mouse o touch, además del teclado |
-| I9 | El juego se adapta a distintos tamaños de ventana sin romperse |
+
+
+| I7 | El puntaje máximo se guarda y sobrevive al cierre del navegador | Nah
+| I8 | El juego también se puede jugar con mouse o touch, además del teclado | Nah
 
 ## Nivel 3 — Avanzado — Autodidactismo real
 
 | ID | Ítem |
 |---|---|
-| A1 | Animaciones de sprite (spritesheet con frames, no cambio de imagen) |
-| A2 | Efecto de partículas al recolectar |
-| A3 | Movimiento con tweens (aparición, desaparición o rebote suavizado con easing) |
-| A4 | El código está separado en varios archivos con `import` / `export` |
-| A5 | El juego es data-driven: los tipos de objeto están definidos en un array/objeto de configuración y el código los lee, en vez de estar escritos a mano uno por uno |
-| A6 | Creaste una clase propia que extiende una clase de Phaser y la usás |
-| A7 | Power-ups con duración temporal (imán, escudo, cámara lenta, doble puntaje) |
-| A8 | Efectos de cámara (shake al perder vida, flash, zoom) |
-| A9 | El fondo tiene parallax o scroll infinito |
-| A10 | Una escena de UI corriendo en paralelo a la del juego (no dentro de ella) |
+| A1 | Animaciones de sprite (spritesheet con frames, no cambio de imagen) | Nah
+| A2 | Efecto de partículas al recolectar | PUEDE SER
+| A3 | Movimiento con tweens (aparición, desaparición o rebote suavizado con easing) | NAH
+
+| A5 | El juego es data-driven: los tipos de objeto están definidos en un array/objeto de configuración y el código los lee, en vez de estar escritos a mano uno por uno | Creo?
+| A6 | Creaste una clase propia que extiende una clase de Phaser y la usás |Eh?
+| A7 | Power-ups con duración temporal (imán, escudo, cámara lenta, doble puntaje) | PUEDE SER
+| A8 | Efectos de cámara (shake al perder vida, flash, zoom) | Nah
+| A9 | El fondo tiene parallax o scroll infinito | Nah
+| A10 | Una escena de UI corriendo en paralelo a la del juego (no dentro de ella) | Eh?
 
 ---
 
