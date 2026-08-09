@@ -38,11 +38,40 @@ this.monedapiscina = this.physics.add.group([])
 //Colisiones
 this.physics.add.overlap(this.basket, this.monedapiscina, this.colisionesentreobjetos, null, this)
 
+//ui
+const puntaje = this.add.text (10,10, 'Puntaje: ', {
+   fontSize: '40px',
+   color:'#0000000',
+   stroke: '#ffffff',
+   strokeThickness: 5
+})
 
+this.elcero = this.add.text (puntaje.x + puntaje.width,10, '0', {
+   fontSize: '40px',
+   color:'#0000000',
+   stroke: '#ffffff',
+   strokeThickness: 5
+})
+
+this.eltimer = this.add.text (this.scale.width - 80 ,10, '30', {
+   fontSize: '60px',
+   color:'#0000000',
+   stroke: '#ffffff',
+   strokeThickness: 5
+})
+
+//timer
+this.termino = false
+this.timer = this.time.delayedCall(30 * 1000, this.gameover ,[], this)
 
 
  }
 update(){
+if (this.termino){
+    this.basket.setVelocityX(0)
+            return;
+        }
+this.eltimer.setText(Math.round(this.timer.getRemainingSeconds().toString()));
 
     if(this.teclas.left.isDown){
         this.basket.setVelocityX(-500)}
@@ -72,10 +101,18 @@ update(){
 
     colisionesentreobjetos(basket,moneda){
         moneda.disableBody(true,true)
-        this.score += 1
-        this.sound.play('Sonido'); {
-        volume:1
+        if (this.termino){
+            return;
         }
+        this.score += 10;
+        this.elcero.setText(this.score.toString());
+        this.sound.play('Sonido');
+        volume: 1
+    }
+    
+    gameover(){
+        this.termino = true
+        this.scene.start('Gameoverscene', {score: this.score} );
     }
 
 }

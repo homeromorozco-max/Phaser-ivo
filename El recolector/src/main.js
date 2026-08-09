@@ -1,5 +1,5 @@
 import { Scene } from './scenes/Scene.js';
-
+import { Gameoverscene } from './scenes/Gameoverscene.js';
 const config = {
     type: Phaser.AUTO,
     title: 'El recolector',
@@ -10,7 +10,8 @@ const config = {
     backgroundColor: '#fff',
     pixelArt: false,
     scene: [
-        Scene
+        Scene,
+        Gameoverscene
     ],
     scale: {
         mode: Phaser.Scale.FIT,
@@ -20,7 +21,7 @@ const config = {
         default: 'arcade',
         arcade:{
             gravity: {
-                x: 0, y: 200,
+                x: 0, y: 300,
          },
             debug: true
         }
