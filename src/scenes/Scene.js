@@ -91,7 +91,6 @@ this.termino = false
 this.timer = this.time.delayedCall(30 * 1000, this.gameover ,[], this)
 
 
-
  }
 update(){
 
@@ -126,6 +125,11 @@ this.eltimer.setText(Math.round(this.timer.getRemainingSeconds().toString()));
             return; }
         if (child.y > this.scale.height + 10){child.setActive(false).setVisible(false) }
     });
+
+
+    if (this.vida <= 0){
+        this.termino = true
+    this.scene.start('Gameoverscene', {score: this.score})}
 }
 
 
@@ -216,5 +220,4 @@ this.eltimer.setText(Math.round(this.timer.getRemainingSeconds().toString()));
         this.termino = true
         this.scene.start('Gameoverscene', {score: this.score} );
     }
-
 }
