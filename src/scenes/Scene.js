@@ -13,7 +13,7 @@ export class Scene extends Phaser.Scene {
 
     create() {
         this.score = 0
-        this.vida = 5
+        this.vida = 1
     this.add.image(0, 0, 'Background').setOrigin(0,0)
         this.basket = this.physics.add.image(this.scale.width / 2, 630, 'Canasta');
         this.basket.body.setAllowGravity(false).setCollideWorldBounds(true)
@@ -72,7 +72,7 @@ const vidas = this.add.text (10,60, 'Vidas: ', {
    strokeThickness: 5
 })
 
-this.elcerovidas = this.add.text (vidas.x + vidas.width,60, '5', {
+this.elcerovidas = this.add.text (vidas.x + vidas.width,60, `${this.vida}`, {
    fontSize: '40px',
    color:'#0000000',
    stroke: '#ffffff',
